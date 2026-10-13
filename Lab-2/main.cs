@@ -162,8 +162,8 @@ internal class Program
     private static void RunTask5()
     {
         Console.WriteLine(
-            "\n--- Задача 5: Создаем " +
-            "Студента ---");
+            "\nЗадача 5: Создаем " +
+            "Студента");
         
         int[] grades = { 3, 4, 5 };
         Student vasya = new Student(
@@ -177,8 +177,8 @@ internal class Program
     private static void RunTask6()
     {
         Console.WriteLine(
-            "\n--- Задача 6: Студент " +
-            "отличник ---");
+            "\nЗадача 6: Студент " +
+            "отличник");
         
         int[] grades1 = { 3, 4, 5, 4 };
         Student vasya = new Student(

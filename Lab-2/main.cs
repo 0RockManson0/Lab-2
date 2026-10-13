@@ -153,10 +153,10 @@ internal class Program
         Point p1 = new Point(3, 5);
         Point p2 = new Point(25, 6);
         Point p3 = new Point(7, 8);
-     // Point pInvalid = new Point(); 
-        Console.WriteLine(p1);
-        Console.WriteLine(p2);
-        Console.WriteLine(p3);
+        // Point pInvalid = new Point(); 
+        Console.WriteLine("1: " + p1);
+        Console.WriteLine("2: " + p2);
+        Console.WriteLine("3: " + p3);
     }
 
     private static void RunTask5()

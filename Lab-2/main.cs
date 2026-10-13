@@ -148,12 +148,12 @@ internal class Program
     private static void RunTask4()
     {
         Console.WriteLine(
-            "\n--- Задача 4: Создаем Точку ---");
+            "\nЗадача 4: Создаем Точку");
         
         Point p1 = new Point(3, 5);
         Point p2 = new Point(25, 6);
         Point p3 = new Point(7, 8);
-
+     // Point pInvalid = new Point(); 
         Console.WriteLine(p1);
         Console.WriteLine(p2);
         Console.WriteLine(p3);

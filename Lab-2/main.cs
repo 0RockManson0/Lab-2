@@ -110,32 +110,22 @@ internal class Program
     private static void RunTask3()
     {
         Console.WriteLine(
-            "\n--- Задача 3: Студент ---");
+            "\nЗадача 3: Студент");
         
         int[] vasyaGrades = { 3, 4, 5 };
         Student vasya = new Student(
             "Вася", vasyaGrades);
-
-        // Пункт 2: копируем ссылку на массив
+        
         Student petya = new Student("Петя");
         petya.Grades = vasya.Grades;
-
-        // Пункт 3: меняем оценку Пети
+        
         petya.Grades[0] = 5;
 
         Console.WriteLine(
             "\nПосле изменения оценки Пети:");
         Console.WriteLine(vasya);
         Console.WriteLine(petya);
-        Console.WriteLine(
-            "Объяснение: Массивы — " +
-            "ссылочные типы. Присвоив " +
-            "petya.Grades = vasya.Grades, " +
-            "мы сделали так, что оба " +
-            "студента ссылаются на один " +
-            "и тот же массив в памяти.");
-
-        // Пункт 4: глубокое копирование
+        
         Student andrey = new Student("Андрей");
         int[] andreyGrades = 
             new int[vasya.Grades.Length];

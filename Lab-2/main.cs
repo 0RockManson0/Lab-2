@@ -39,7 +39,7 @@ internal class Program
     private static void RunTask1()
     {
         Console.WriteLine(
-            "\n--- Задача 1: Точка ---");
+            "\nЗадача 1: Точка");
         
         double x1 = ConsoleHelper.ReadDouble(
             "Точка 1. Введите X: ");

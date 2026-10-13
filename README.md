@@ -140,5 +140,9 @@
 ### Тестирование
 
 <p align="center">
-  <img src="images/lab2_task3.png" width="600" alt="Скриншот задачи 1">
+  <img src="images/lab2_task4_1.png" width="600" alt="Скриншот задачи 1">
+</p>
+
+<p align="center">
+  <img src="images/lab2_task4_2.png" width="600" alt="Скриншот задачи 1">
 </p>

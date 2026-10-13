@@ -69,7 +69,7 @@ internal class Program
     private static void RunTask2()
     {
         Console.WriteLine(
-            "\n--- Задача 2: Прямая ---");
+            "\nЗадача 2: Прямая");
         
         Point p1 = new Point(1, 3);
         Point p2 = new Point(23, 8);
@@ -78,8 +78,6 @@ internal class Program
         Point p3 = new Point(5, 10);
         Point p4 = new Point(25, 10);
         Line line2 = new Line(p3, p4);
-
-        // Линия 3 ссылается на те же точки
         Line line3 = new Line(
             line1.Start, line2.End);
 
@@ -88,8 +86,7 @@ internal class Program
         Console.WriteLine("Линия 1: " + line1);
         Console.WriteLine("Линия 2: " + line2);
         Console.WriteLine("Линия 3: " + line3);
-
-        // Пункт 4: меняем координаты внутри точек
+        
         line1.Start.X = 10;
         line2.End.Y = 20;
 
@@ -99,8 +96,7 @@ internal class Program
         Console.WriteLine("Линия 1: " + line1);
         Console.WriteLine("Линия 2: " + line2);
         Console.WriteLine("Линия 3: " + line3);
-
-        // Пункт 5: переприсваиваем ссылку
+        
         line1.Start = new Point(99, 99);
 
         Console.WriteLine(

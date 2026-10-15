@@ -5,15 +5,14 @@ internal class Student
     // Поля
     private string _name;
     private int[] _grades;
-    
+
     // Конструкторы
-    
     public Student(string name, int[] grades = null)
     {
         Name = name;
         Grades = grades;
     }
-    
+
     public Student(Student other)
     {
         if (other != null)
@@ -28,7 +27,7 @@ internal class Student
             }
         }
     }
-    
+
     // Свойства
     public string Name
     {
@@ -55,11 +54,20 @@ internal class Student
             }
             else
             {
+                for (int i = 0; i < value.Length; i++)
+                {
+                    if (value[i] < 2 || value[i] > 5)
+                    {
+                        throw new ArgumentException(
+                            "Оценка должна быть " +
+                            "от 2 до 5.");
+                    }
+                }
                 _grades = value;
             }
         }
     }
-    
+
     // Методы
     public double GetAverageGrade()
     {
@@ -67,13 +75,11 @@ internal class Student
         {
             return 0;
         }
-        
         int sum = 0;
         for (int i = 0; i < _grades.Length; i++)
         {
             sum += _grades[i];
         }
-        
         return (double)sum / _grades.Length;
     }
 
@@ -83,7 +89,6 @@ internal class Student
         {
             return false;
         }
-        
         for (int i = 0; i < _grades.Length; i++)
         {
             if (_grades[i] != 5)
@@ -91,7 +96,6 @@ internal class Student
                 return false;
             }
         }
-        
         return true;
     }
 

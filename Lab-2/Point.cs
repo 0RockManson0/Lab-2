@@ -5,14 +5,14 @@ internal class Point
     // Поля
     private double _x;
     private double _y;
+
     // Конструкторы
-    // С параметрами (основной)
     public Point(double x, double y)
     {
         X = x;
         Y = y;
     }
-    
+
     public Point(Point other)
     {
         if (other != null)
@@ -21,7 +21,7 @@ internal class Point
             _y = other._y;
         }
     }
-    
+
     // Свойства
     public double X
     {
@@ -54,7 +54,7 @@ internal class Point
             _y = value;
         }
     }
-    
+
     // Методы
     public override string ToString()
     {

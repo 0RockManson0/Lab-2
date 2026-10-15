@@ -5,14 +5,14 @@ internal class Line
     // Поля
     private Point _start;
     private Point _end;
-    
+
     // Конструкторы
     public Line(Point start, Point end)
     {
         Start = start;
         End = end;
     }
-    
+
     public Line(Line other)
     {
         if (other != null)
@@ -21,7 +21,7 @@ internal class Line
             _end = new Point(other._end);
         }
     }
-    
+
     // Свойства
     public Point Start
     {
@@ -52,7 +52,7 @@ internal class Line
             _end = value;
         }
     }
-    
+
     // Методы
     public override string ToString()
     {

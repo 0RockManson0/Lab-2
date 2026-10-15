@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int choice;
+        int choice = 0;
         while (true)
         {
             Console.WriteLine(
@@ -34,21 +34,25 @@ internal class Program
         }
     }
 
-    private static Point ReadPoint(string prompt)
-    {
-        double x = ConsoleHelper.ReadDouble(
-            prompt + ". Введите X: ");
-        double y = ConsoleHelper.ReadDouble(
-            prompt + ". Введите Y: ");
-        return new Point(x, y);
-    }
-
     private static void RunTask1()
     {
-        Console.WriteLine("\nЗадача 1: Точка");
-        Point p1 = ReadPoint("Точка 1");
-        Point p2 = ReadPoint("Точка 2");
-        Point p3 = ReadPoint("Точка 3");
+        Console.WriteLine(
+            "\nЗадача 1: Точка");
+        double x1 = ConsoleHelper.ReadDouble(
+            "Точка 1. Введите X: ");
+        double y1 = ConsoleHelper.ReadDouble(
+            "Точка 1. Введите Y: ");
+        Point p1 = new Point(x1, y1);
+        double x2 = ConsoleHelper.ReadDouble(
+            "Точка 2. Введите X: ");
+        double y2 = ConsoleHelper.ReadDouble(
+            "Точка 2. Введите Y: ");
+        Point p2 = new Point(x2, y2);
+        double x3 = ConsoleHelper.ReadDouble(
+            "Точка 3. Введите X: ");
+        double y3 = ConsoleHelper.ReadDouble(
+            "Точка 3. Введите Y: ");
+        Point p3 = new Point(x3, y3);
         Console.WriteLine(
             "\nТекстовое представление:");
         Console.WriteLine("1: " + p1);
@@ -58,57 +62,33 @@ internal class Program
 
     private static void RunTask2()
     {
-        Console.WriteLine("\nЗадача 2: Прямая");
-        Console.WriteLine("Линия 1");
-        Point p1 = ReadPoint("Начало линии 1");
-        Point p2 = ReadPoint("Конец линии 1");
+        Console.WriteLine(
+            "\nЗадача 2: Прямая");
+        Point p1 = new Point(1, 3);
+        Point p2 = new Point(23, 8);
         Line line1 = new Line(p1, p2);
-        
-        Console.WriteLine("Линия 2");
-        Point p3 = ReadPoint("Начало линии 2");
-        Point p4 = ReadPoint("Конец линии 2");
+        Point p3 = new Point(5, 10);
+        Point p4 = new Point(25, 10);
         Line line2 = new Line(p3, p4);
-        
         Line line3 = new Line(
             line1.Start, line2.End);
-        
-        Console.WriteLine("\nНачальное состояние:");
+        Console.WriteLine(
+            "\nНачальное состояние:");
         Console.WriteLine("Линия 1: " + line1);
         Console.WriteLine("Линия 2: " + line2);
         Console.WriteLine("Линия 3: " + line3);
-        
+        line1.Start.X = 10;
+        line2.End.Y = 20;
         Console.WriteLine(
-            "\nПункт 4: Изменение координат");
-        double newX1 = ConsoleHelper.ReadDouble(
-            "Новый X начала линии 1: ");
-        double newY1 = ConsoleHelper.ReadDouble(
-            "Новый Y начала линии 1: ");
-        line1.Start.X = newX1;
-        line1.Start.Y = newY1;
-        
-        double newX2 = ConsoleHelper.ReadDouble(
-            "Новый X конца линии 2: ");
-        double newY2 = ConsoleHelper.ReadDouble(
-            "Новый Y конца линии 2: ");
-        line2.End.X = newX2;
-        line2.End.Y = newY2;
-        
-        Console.WriteLine(
-            "\nПосле изменения координат:");
+            "\nПосле изменения координат " +
+            "точек (пункт 4):");
         Console.WriteLine("Линия 1: " + line1);
         Console.WriteLine("Линия 2: " + line2);
         Console.WriteLine("Линия 3: " + line3);
-        
+        line1.Start = new Point(99, 99);
         Console.WriteLine(
-            "\nПункт 5: Переприсваивание ссылки");
-        double newX3 = ConsoleHelper.ReadDouble(
-            "Новый X для точки: ");
-        double newY3 = ConsoleHelper.ReadDouble(
-            "Новый Y для точки: ");
-        line1.Start = new Point(newX3, newY3);
-        
-        Console.WriteLine(
-            "\nПосле переприсваивания:");
+            "\nПосле переприсваивания " +
+            "ссылки (пункт 5):");
         Console.WriteLine("Линия 1: " + line1);
         Console.WriteLine("Линия 2: " + line2);
         Console.WriteLine("Линия 3: " + line3);
@@ -116,81 +96,43 @@ internal class Program
 
     private static void RunTask3()
     {
-        Console.WriteLine("\nЗадача 3: Студент");
-        Console.WriteLine("Студент 1");
-        string name1 = ConsoleHelper.ReadString(
-            "Имя: ");
-        int[] grades1 = ConsoleHelper.ReadGrades(
-            "Оценки: ");
-        Student student1 = new Student(
-            name1, grades1);
-        
-        Console.WriteLine("Студент 2");
-        string name2 = ConsoleHelper.ReadString(
-            "Имя: ");
-        Student student2 = new Student(name2);
-        student2.Grades = student1.Grades;
-        
         Console.WriteLine(
-            "Изменение оценки Студента 2");
-        int newGrade2 = ConsoleHelper.ReadInt(
-            "Новая первая оценка (2-5): ");
-        student2.Grades[0] = newGrade2;
-        
+            "\nЗадача 3: Студент");
+        int[] vasyaGrades = { 3, 4, 5 };
+        Student vasya = new Student(
+            "Вася", vasyaGrades);
+        Student petya = new Student("Петя");
+        petya.Grades = vasya.Grades;
+        petya.Grades[0] = 5;
         Console.WriteLine(
-            "\nПосле изменения " +
-            "(поверхностное копирование):");
-        Console.WriteLine(student1);
-        Console.WriteLine(student2);
-        
-        Console.WriteLine("Студент 3");
-        string name3 = ConsoleHelper.ReadString(
-            "Имя: ");
-        int[] deepCopyGrades = 
-            new int[student1.Grades.Length];
+            "\nПосле изменения оценки Пети:");
+        Console.WriteLine(vasya);
+        Console.WriteLine(petya);
+        Student andrey = new Student("Андрей");
+        int[] andreyGrades = 
+            new int[vasya.Grades.Length];
         for (int i = 0; 
-            i < student1.Grades.Length; i++)
+            i < vasya.Grades.Length; i++)
         {
-            deepCopyGrades[i] = student1.Grades[i];
+            andreyGrades[i] = vasya.Grades[i];
         }
-        Student student3 = new Student(
-            name3, deepCopyGrades);
-        
+        andrey.Grades = andreyGrades;
+        vasya.Grades[0] = 2;
         Console.WriteLine(
-            "Изменение оценки Студента 1");
-        int newGrade1 = ConsoleHelper.ReadInt(
-            "Новая первая оценка (2-5): ");
-        student1.Grades[0] = newGrade1;
-        
-        Console.WriteLine(
-            "\nПосле изменения " +
-            "(глубокое копирование):");
-        Console.WriteLine(student1);
-        Console.WriteLine(student3);
+            "\nПосле глубокого копирования " +
+            "и изменения оценки Васи:");
+        Console.WriteLine(vasya);
+        Console.WriteLine(andrey);
     }
 
     private static void RunTask4()
     {
         Console.WriteLine(
             "\nЗадача 4: Создаем Точку");
-        Console.WriteLine(
-            "Демонстрация: конструктор " +
-            "по умолчанию удален.");
-        Console.WriteLine(
-            "Создать точку без X и Y " +
-            "невозможно.\n");
-        
+        Point p1 = new Point(3, 5);
+        Point p2 = new Point(25, 6);
+        Point p3 = new Point(7, 8);
         // Point pInvalid = new Point(); 
-        // Ошибка компиляции: Point does not 
-        // contain a constructor that takes 
-        // 0 arguments.
-
-        Point p1 = ReadPoint("Точка 1");
-        Point p2 = ReadPoint("Точка 2");
-        Point p3 = ReadPoint("Точка 3");
-        
-        Console.WriteLine(
-            "\nУспешно созданные точки:");
         Console.WriteLine("1: " + p1);
         Console.WriteLine("2: " + p2);
         Console.WriteLine("3: " + p3);
@@ -199,59 +141,38 @@ internal class Program
     private static void RunTask5()
     {
         Console.WriteLine(
-            "\nЗадача 5: Создаем Студента");
-        Console.WriteLine("Студент 1");
-        string name1 = ConsoleHelper.ReadString(
-            "Имя: ");
-        int[] grades1 = ConsoleHelper.ReadGrades(
-            "Оценки (Enter для пропуска): ");
-        Student student1 = new Student(
-            name1, grades1);
-        
-        Console.WriteLine("Студент 2");
-        string name2 = ConsoleHelper.ReadString(
-            "Имя: ");
-        int[] grades2 = ConsoleHelper.ReadGrades(
-            "Оценки (Enter для пропуска): ");
-        Student student2 = new Student(
-            name2, grades2);
-        
-        Console.WriteLine(student1);
-        Console.WriteLine(student2);
+            "\nЗадача 5: Создаем " +
+            "Студента");
+        int[] grades = { 3, 4, 5 };
+        Student vasya = new Student(
+            "Вася", grades);
+        Student maxim = new Student("Максим");
+        Console.WriteLine(vasya);
+        Console.WriteLine(maxim);
     }
 
     private static void RunTask6()
     {
         Console.WriteLine(
-            "\nЗадача 6: Студент отличник");
-        Console.WriteLine("Студент 1");
-        string name1 = ConsoleHelper.ReadString(
-            "Имя: ");
-        int[] grades1 = ConsoleHelper.ReadGrades(
-            "Оценки: ");
-        Student student1 = new Student(
-            name1, grades1);
-        
-        Console.WriteLine("Студент 2");
-        string name2 = ConsoleHelper.ReadString(
-            "Имя: ");
-        int[] grades2 = ConsoleHelper.ReadGrades(
-            "Оценки: ");
-        Student student2 = new Student(
-            name2, grades2);
-        
-        Console.WriteLine(student1);
+            "\nЗадача 6: Студент " +
+            "отличник");
+        int[] grades1 = { 3, 4, 5, 4 };
+        Student vasya = new Student(
+            "Вася", grades1);
+        int[] grades2 = { 5, 5, 5, 5 };
+        Student petya = new Student(
+            "Петя", grades2);
+        Console.WriteLine(vasya);
         Console.WriteLine(
             "Средний балл: " + 
-            student1.GetAverageGrade());
+            vasya.GetAverageGrade());
         Console.WriteLine(
-            "Отличник: " + student1.IsExcellent());
-        
-        Console.WriteLine(student2);
+            "Отличник: " + vasya.IsExcellent());
+        Console.WriteLine(petya);
         Console.WriteLine(
             "Средний балл: " + 
-            student2.GetAverageGrade());
+            petya.GetAverageGrade());
         Console.WriteLine(
-            "Отличник: " + student2.IsExcellent());
+            "Отличник: " + petya.IsExcellent());
     }
 }
